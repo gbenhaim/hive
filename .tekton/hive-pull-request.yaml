@@ -30,6 +30,15 @@ spec:
     value: .
   - name: revision
     value: '{{revision}}'
+  taskRunSpecs:
+    - pipelineTaskName: build-container
+      stepOverrides:
+        - name: build
+          resources:
+            requests:
+              memory: 6Gi
+            limits:
+              memory: 6Gi
   pipelineSpec:
     finally:
     - name: show-sbom
@@ -144,7 +153,7 @@ spec:
       - name: revision
         value: $(params.revision)
       - name: depth
-        value: "0"
+        value: "100"
       - name: refspec
         value: "refs/tags/*:refs/tags/* refs/heads/{{source_branch}}"
       runAfter:
