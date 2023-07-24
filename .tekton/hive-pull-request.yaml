@@ -30,15 +30,6 @@ spec:
     value: .
   - name: revision
     value: '{{revision}}'
-  taskRunSpecs:
-    - pipelineTaskName: build-container
-      stepOverrides:
-        - name: build
-          resources:
-            requests:
-              memory: 6Gi
-            limits:
-              memory: 6Gi
   pipelineSpec:
     finally:
     - name: show-sbom
@@ -239,9 +230,9 @@ spec:
       taskRef:
         params:
         - name: name
-          value: buildah
+          value: buildah-6gb
         - name: bundle
-          value: quay.io/redhat-appstudio-tekton-catalog/task-buildah:0.1@sha256:9cec47762c7fb80f2d0662f8ed979a89d64687880339bcbe20c271cf01c90e49
+          value: quay.io/redhat-appstudio-tekton-catalog/task-buildah-6gb@sha256:b6923f6e72be17c6ef6bb4eb1da7260a0385627a7de49ca2be23ed5e30cf5d0b
         - name: kind
           value: task
         resolver: bundles
